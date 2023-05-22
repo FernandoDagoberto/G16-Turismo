@@ -20,13 +20,13 @@ document.getElementById("idFooter").innerHTML = /*html*/`
       <div class="footer-center">
         <ul class="redes-sociales">
           <li>
-            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="www.facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
           </li>
           <li>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="www.twitter.com"><i class="fa-brands fa-twitter"></i></a>
           </li>
           <li>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
           </li>
         </ul>
       </div>

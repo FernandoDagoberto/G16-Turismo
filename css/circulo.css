@@ -1,0 +1,22 @@
+#info{
+    background: #FFF;
+    text-align: center;
+    padding: 20px;
+}
+
+#info .contenedor{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.info-circulo{
+    margin: 20px;
+}
+
+.info-circulo img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border:5px solid #000;
+}

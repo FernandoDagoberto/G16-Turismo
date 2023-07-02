@@ -67,12 +67,12 @@ createApp({
       };
       fetch(this.url, options)
         .then(function () {
-          alert("Registro grabado: " + titulo);
+          alert("Registro grabado ");
           window.location.href = "./lista_paseos.html";
         })
         .catch((err) => {
           console.error(err);
-          alert("Error al Grabar " + titulo );
+          alert("Error al Grabar "  );
         });
     },
   },

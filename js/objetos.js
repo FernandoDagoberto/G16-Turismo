@@ -1,16 +1,40 @@
-document.getElementById("idEncabezado").innerHTML = `
-    <div class="contenedor">
-        <h1>G16 Turismo</h1>
-        
-        <input type="checkbox" name="" id="menu-bar" />
-        <label for="menu-bar"><i class="fa-sharp fa-solid fa-bars fa-lg"></i></label>
-        <nav class="menu">
-          <a href="index.html">Inicio</a>
-          <a href="paseos.html">Paseos</a>
-          <a href="gastronomia.html">Gastronomía</a>
-          <a href="contacto.html">Contacto</a>
-        </nav>
-      </div> `;
+document.getElementById("idEncabezado").innerHTML = /*html*/`
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container">
+  <a class="navbar-brand" href="#">G16 Turismo</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="gastronomia.html">Gastronomia</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownServicios" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Paseos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownServicios">
+          <a class="dropdown-item" href="paseos.html">Paseos</a>
+          
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="lista_paseos.html">Editar Paseos</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contacto.html">Contacto</a>
+      </li>
+    </ul>
+  
+
+  </div>
+</div>
+</nav>
+ `;
 
 document.getElementById("idFooter").innerHTML = /*html*/`
       <div class="footer-left">

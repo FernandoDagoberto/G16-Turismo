@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="css/estilos.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/8746eabdf6.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header id="idEncabezado"></header>
+    <main>
+      <section id="paseos">
+        <h3>PASEOS</h3>
+        <div id="app" class="contenedor">
+          <div>
+            <a class="btn btn-primary" href="alta_paseo.html">Nuevo</a>
+          </div>
+          <form class="d-flex my-2 my-lg-0">
+            <input
+              class="form-control me-sm-2"
+              type="text"
+              v-model="searchQuery"
+              placeholder="Search"
+              v-on:keyup.enter="search"
+            />
+
+            <button
+              class="btn btn-outline-success my-2 my-sm-0"
+              v-on:click="search"
+              type="submit"
+            >
+              Search
+            </button>
+          </form>
+          <br /><br />
+          <div v-if="error">
+            <p>Lo sentimos , ........</p>
+          </div>
+          <div v-else>
+            <section v-if="cargando">
+              <div class="spinner-border"></div>
+              <p>Cargando .....</p>
+            </section>
+            <section v-else>
+              <div class="table-responsive">
+                <table class="table table-striped table-borderless">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">Titulo</th>
+                      <th scope="col">Descripcion</th>
+                      <th scope="col">Imagen</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="paseo in paseos">
+                      <td scope="row">{{paseo.id}}</td>
+                      <td>{{paseo.titulo}}</td>
+                      <td class="col-md-6">{{paseo.descripcion}}</td>
+                      <!-- <td>{{paseo.imagen}}</td> -->
+                      <td>
+                        <img
+                          width="190"
+                          :src="paseo.imagen"
+                          :alt="paseo.titulo"
+                        />
+                      </td>
+                      <td class="col-md-2">
+                        <a
+                          class="btn btn-primary"
+                          :href="'paseo_update.html?id='+ paseo.id"
+                          >Editar</a
+                        >
+                        <button
+                          type="button"
+                          class="btn btn-danger"
+                          v-on:click="eliminar(paseo.id)"
+                        >
+                          Eliminar
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <!-- place footer here -->
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/objetos.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!--Link de VUE-->
+    <script src="js/paseos.js"></script>
+  </body>
+</html>

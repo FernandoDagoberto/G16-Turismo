@@ -45,8 +45,13 @@ createApp({
       }else{
         this.paseos=this.paseos.filter(paseo=>{
           const titulo= paseo.titulo.toLowerCase();
-         const textoBusqueda=this.search.toLowerCase();
-         return titulo.includes(textoBusqueda)
+          const descrip=paseo.descripcion.toLowerCase();
+          const textoBusqueda=this.search.toLowerCase();
+          return (
+            titulo.includes(textoBusqueda) ||
+            descrip.includes(textoBusqueda)
+          )
+          
         });
       }
     },

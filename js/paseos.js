@@ -11,8 +11,7 @@ createApp({
       titulo: "",
       descripcion: "",
       imagen: "",
-      searchResults: [],
-      searchQuery: '',
+      search: ''
     };
   },
   methods: {
@@ -39,19 +38,18 @@ createApp({
         });
     },
 
-    search() {
-      fetch(`/search?q=${this.searchQuery}`)
-          .then(response => response.json())
-          .then(data => {
-              this.searchResults = data;
-          })
-          .catch(error => {
-              console.error('Error en la búsqueda:', error);
-          });
-  },
-
-
-
+    searchData(){
+      // this.fetch();
+      if (this.search===""){
+        this.fetchData(this.url);
+      }else{
+        this.paseos=this.paseos.filter(paseo=>{
+          const titulo= paseo.titulo.toLowerCase();
+         const textoBusqueda=this.search.toLowerCase();
+         return titulo.includes(textoBusqueda)
+        });
+      }
+    },
 
     grabar() {
       let paseo = {
@@ -76,6 +74,13 @@ createApp({
         });
     },
   },
+  
+watch:{
+    search(newVal){
+      this.searchData()
+    }
+  },
+
   created() {
     this.fetchData(this.url);
   },

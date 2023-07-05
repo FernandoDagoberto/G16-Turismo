@@ -32,23 +32,27 @@
           <div>
             <a class="btn btn-primary" href="alta_paseo.html">Nuevo</a>
           </div>
-          <form class="d-flex my-2 my-lg-0">
+
+          <div class="input-group">
+            <form class="d-flex my-2 my-lg-0">
             <input
               class="form-control me-sm-2"
               type="text"
-              v-model="searchQuery"
-              placeholder="Search"
-              v-on:keyup.enter="search"
+              v-model="search"
+              placeholder="Ingrese paseo a buscar"
+              v-on:keyup.enter="searchData"
             />
-
-            <button
-              class="btn btn-outline-success my-2 my-sm-0"
-              v-on:click="search"
-              type="submit"
-            >
-              Search
-            </button>
-          </form>
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-success my-2 my-sm-0"
+                v-on:click="searchData"
+                type="button"
+              >
+                Buscar
+              </button>
+            </div>
+            </form>
+          </div>
           <br /><br />
           <div v-if="error">
             <p>Lo sentimos , ........</p>

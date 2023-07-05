@@ -70,12 +70,26 @@ createApp({
       };
       fetch(this.url, options)
         .then(function () {
-          alert("Registro grabado ");
-          window.location.href = "./lista_paseos.html";
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Registro grabado',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          setTimeout(function() {
+            window.location.href ="./lista_paseos.html";
+          }, 2000);  
         })
         .catch((err) => {
           console.error(err);
-          alert("Error al Grabar "  );
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'No se pudo grabar el registro',
+            showConfirmButton: false,
+            timer: 1500
+          });
         });
     },
   },

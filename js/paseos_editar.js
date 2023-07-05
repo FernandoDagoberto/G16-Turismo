@@ -42,27 +42,12 @@ createApp({
       };
       fetch(this.url, options)
         .then(function () {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Registro modificado',
-            showConfirmButton: false,
-            timer: 1500
-          });
-          setTimeout(function() {
-            window.location.href ="./lista_paseos.html";
-          }, 2000);
-          
+          alert("Registro modificado");
+          window.location.href = "./lista_paseos.html";
         })
         .catch((err) => {
           console.error(err);
-          Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'No se pudo actualizar el registro',
-            showConfirmButton: false,
-            timer: 1500
-          });
+          alert("Error al Modificar");
         });
     },
   },

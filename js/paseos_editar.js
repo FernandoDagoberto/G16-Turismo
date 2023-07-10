@@ -9,7 +9,7 @@ createApp({
       titulo: "",
       descripcion: "",
       imagen:"",
-      url: "https://fdiablo1985.pythonanywhere.com/paseos/" + id,
+      url: "http://fdiablo1985.pythonanywhere.com/paseos/" + id,
     };
   },
   methods: {
@@ -17,7 +17,6 @@ createApp({
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           this.id = data.id;
           this.titulo = data.titulo;
           this.descripcion = data.descripcion;

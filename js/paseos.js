@@ -11,7 +11,7 @@ createApp({
       titulo: "",
       descripcion: "",
       imagen: "",
-      search: ''
+      txtSearch: ''
     };
   },
   methods: {
@@ -38,24 +38,6 @@ createApp({
         });
     },
 
-    searchData(){
-      // this.fetch();
-      if (this.search===""){
-        this.fetchData(this.url);
-      }else{
-        this.paseos=this.paseos.filter(paseo=>{
-          const titulo= paseo.titulo.toLowerCase();
-          const descrip=paseo.descripcion.toLowerCase();
-          const textoBusqueda=this.search.toLowerCase();
-          return (
-            titulo.includes(textoBusqueda) ||
-            descrip.includes(textoBusqueda)
-          )
-          
-        });
-      }
-    },
-
     grabar() {
       let paseo = {
         titulo: this.titulo,
@@ -70,20 +52,56 @@ createApp({
       };
       fetch(this.url, options)
         .then(function () {
-          alert("Registro grabado ");
-          window.location.href = "./lista_paseos.html";
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Registro grabado',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          setTimeout(function() {
+            window.location.href ="./lista_paseos.html";
+          }, 2000);  
         })
         .catch((err) => {
           console.error(err);
-          alert("Error al Grabar "  );
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'No se pudo grabar el registro',
+            showConfirmButton: false,
+            timer: 1500
+          });
         });
     },
-  },
-  
-watch:{
-    search(newVal){
-      this.searchData()
+
+    buscarPaseos() {
+      fetch(`https://fdiablo1985.pythonanywhere.com/paseos/search?q=${this.txtSearch}` )
+        .then(response => response.json())
+        .then(data => {
+          this.paseos = data;
+        })
+        .catch(error => {
+          console.error(error);
+        });
     }
+  },
+  computed: {
+    paseosFiltrados() {
+      return this.paseos.filter(paseo => {
+        const searchTerm = this.txtSearch.toLowerCase();
+        return (
+          paseo.titulo.toLowerCase().includes(searchTerm) ||
+          paseo.descripcion.toLowerCase().includes(searchTerm)
+        );
+      });
+    }
+  },
+  watch: {
+    txtSearch() {
+      this.buscarPaseos();
+    },
+   
   },
 
   created() {

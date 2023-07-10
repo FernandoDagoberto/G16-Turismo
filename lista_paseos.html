@@ -22,6 +22,7 @@
       src="https://kit.fontawesome.com/8746eabdf6.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     <header id="idEncabezado"></header>
@@ -38,14 +39,14 @@
             <input
               class="form-control me-sm-2"
               type="text"
-              v-model="search"
+              v-model="txtSearch"
               placeholder="Ingrese paseo a buscar"
-              v-on:keyup.enter="searchData"
+              v-on:keyup.enter="buscarPaseos"
             />
             <div class="input-group-append">
               <button
                 class="btn btn-outline-success my-2 my-sm-0"
-                v-on:click="searchData"
+                v-on:click="buscarPaseos"
                 type="button"
               >
                 Buscar
@@ -55,7 +56,7 @@
           </div>
           <br /><br />
           <div v-if="error">
-            <p>Lo sentimos , ........</p>
+            <p>Lo sentimos , ........</p>|
           </div>
           <div v-else>
             <section v-if="cargando">
@@ -74,7 +75,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="paseo in paseos">
+                    <tr v-for="paseo in paseosFiltrados" :key="paseo.id">
                       <td scope="row">{{paseo.id}}</td>
                       <td>{{paseo.titulo}}</td>
                       <td class="col-md-6">{{paseo.descripcion}}</td>

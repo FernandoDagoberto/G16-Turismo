@@ -9,7 +9,7 @@ createApp({
       titulo: "",
       descripcion: "",
       imagen:"",
-      url: "http://fdiablo1985.pythonanywhere.com/paseos/" + id,
+      url: "https://fdiablo1985.pythonanywhere.com/paseos/" + id,
     };
   },
   methods: {
